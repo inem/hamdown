@@ -210,8 +210,22 @@ Idea author has no experience in template engines development. Although I am wil
 2. [Your suggestion](https://github.com/inem/hamdown/issues/new)
 
 
-## (Self-)Criticism
+## Criticism
 
-Someone might say that Hamdown goes against the idea of content and representation rules separation. It does. 
+> Hamdown goes against the idea of content and representation rules separation. 
 
-Although the hypothesis is that this approach would be extremely useful for quick experiments and non-pretentious personal websites.
+It does. Although the hypothesis is that this approach would be extremely useful for quick experiments and non-pretentious personal websites.
+
+> The idea of Markdown to be human-readable, and HAML makes it look awful. 
+
+HAML usage is not the obligation, it is an opportunity. The idea is to provide a cheap way to experiment with look and feel for static websites. With libraries like Tachions it is just a matter of adding a few classes to an element. Once you've finished experimenting, simply update your site-wide CSS rules, and through away temporary HAML stuff, if needed.
+
+Look at the Clojure. Clojure code might look confusing and awful for an unprepared mind, but no doubts Clojure is a very powerful insrument. In Hamdown we consciously trade a bit of Markdown elegance for more possibilities.
+
+> You can use plain HTML or ERB if Markdown is not enough
+
+Yes, but HTML closing tags bring too much overhead, and non-trivial constructions take too much visual space, so it stops look like Markdown at all.
+
+> Simply use [kramdown](https://kramdown.gettalong.org/quickref.html)
+
+Yes, it looks like it is possible to achieve similar functionality by chaining Kramdown with ERB (file.md.erb), but it is hard to switch to kramdown, when you're used to HAML.
