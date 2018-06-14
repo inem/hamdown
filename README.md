@@ -88,4 +88,6 @@ As you see, all of the options have significant limitations. This is why Hamdown
 
 ## (Self-)Criticism
 
-Some might say that it goes against the idea of content and representation rules separation. We admit that. Although it might be extremely useful for quick experiments with 
+Some might say that it goes against the idea of content and representation rules separation. It does. 
+
+Although the hypothesis is that this approach would be extremely useful for quick experiments and non-pretentious personal websites.
