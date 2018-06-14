@@ -28,7 +28,7 @@ The suggestion is to develop a new format called Hamdown to combine the power of
 
 ## Current status
 
-Proposal draft
+Proposal draft (no implementation yet)
 
 
 ## Key features of Hamdown: 
