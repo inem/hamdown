@@ -207,7 +207,8 @@ Idea author has no experience in template engines development. Although I am wil
 ## Implementation ideas
 
 1. Use [hamlit](https://github.com/k0kubun/hamlit) as a starting point, and implement additional conversion rules for markdown blocks
-2. [Your suggestion](https://github.com/inem/hamdown/issues/new)
+2. Convert hamdown to [kramdown](https://kramdown.gettalong.org/quickref.html) format, and then simply use kramdown to generate HTML
+3. [Your suggestion](https://github.com/inem/hamdown/issues/new)
 
 
 ## Criticism
