@@ -224,7 +224,7 @@ It does. Although the hypothesis is that this approach would be extremely useful
 
 > The idea of Markdown to be human-readable, and HAML makes it look awful. 
 
-HAML usage is not the obligation, it is an opportunity. The idea is to provide a cheap way to experiment with look and feel for static websites. With libraries like Tachions it is just a matter of adding a few classes to an element. Once you've finished experimenting, simply update your site-wide CSS rules, and through away temporary HAML stuff, if needed.
+HAML usage is not the obligation, it is an opportunity. The idea is to provide a cheap way to experiment with look and feel for static websites. With libraries like Tachions it is just a matter of adding a few classes to an element. Once you've finished experimenting, simply update your site-wide CSS rules, and throw away temporary HAML stuff, if needed.
 
 Look at the Clojure. Clojure code might look confusing and weird for an unprepared mind, but no doubts Clojure is a very powerful insrument. In Hamdown we consciously trade a bit of Markdown's elegance for more possibilities.
 
