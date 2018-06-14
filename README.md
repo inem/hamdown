@@ -57,7 +57,7 @@ Resulting HTML:
 
 ### 2. Built-in front-matter support
 
-Now front-matter is handled by static site generators. But I see no reason why it couldn't be a part of Hamdown. This should significantly reduce the amount of work to be done by static site generator, and even remove need in them in simple cases.
+Now, front-matter is handled by static site generators. But I see no reason why it couldn't be a part of Hamdown. This should significantly reduce the amount of work to be done by static site generator, and even remove need in them in simple cases.
 
 Hamdown:
 ```
@@ -168,7 +168,7 @@ Limitations are obvious:
 
 ### 3. Use markdown filters inside Haml
 
-Then you simply use haml as a main format, but switch to markdown when you have big chunks of texts:
+Then you simply use haml as the main format, but switch to markdown when you have big chunks of texts:
 
 ```
 %h1 Main Title
@@ -183,13 +183,13 @@ As you see, all of the options have significant limitations. This is why Hamdown
 
 ## Challenges
 
-Obviously there could be some clashes between Haml and Markdown generation rules. The general idea is to treat blocks starting with `.`, `%` like Haml, and blocks starting with `*`, `_`, `#`, `-`, and so on treat like Markdown.
+Obviously, there could be some clashes between Haml and Markdown generation rules. The general idea is to treat blocks starting with `.`, `%` like Haml, and blocks starting with `*`, `_`, `#`, `-` (and so on) treat like Markdown.
 
 An example of conflict is "#" symbol. It is used in Haml for `id` attribute, and in Markdown as headers.
 
-A quick solution might be to prohibit ids in Haml part of Hamdown. Smarter solution would be to treat `#person_233 Max` as Haml, and `# Max` as Markdown
+A quick solution might be to prohibit ids in Haml part of Hamdown. A smarter solution would be to treat `#person_233 Max` as Haml, and `# Max` as Markdown
 
-Anyway, it makes sence to start with only a subset of Markdown features.
+Anyway, it makes sense to start with only a subset of Markdown features.
 
 ## Roadmap
 
@@ -202,7 +202,7 @@ Anyway, it makes sence to start with only a subset of Markdown features.
 
 You are very welcome to contribute! Whether you'll write a spec, decide to develop a proof of concept of Hamdown, or share an idea of how to approach the development - it all would be very valuable.
 
-Idea author has no experience in template engines development. Although I am willing to educate myself and work on specification, I don't see myself as a main developer of Hamdown engine yet.
+Idea author has no experience in template engines development. Although I am willing to educate myself and work on the specification, I don't see myself as the main developer of the Hamdown engine yet.
 
 ## Implementation ideas
 
@@ -212,6 +212,6 @@ Idea author has no experience in template engines development. Although I am wil
 
 ## (Self-)Criticism
 
-Some might say that Hamdown goes against the idea of content and representation rules separation. It does. 
+Someone might say that Hamdown goes against the idea of content and representation rules separation. It does. 
 
 Although the hypothesis is that this approach would be extremely useful for quick experiments and non-pretentious personal websites.
