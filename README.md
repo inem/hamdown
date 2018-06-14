@@ -1,4 +1,4 @@
-## Why: To achieve hyper-efficiency when working on static websites.
+## Why: To achieve hyper-efficiency when working on static websites
 
 It is very efficient to use Markdown with static site generators, like [Jekyll](https://jekyllrb.com/) or [Middleman](https://middlemanapp.com/). Although, sometimes Markdown is not enough. 
 
@@ -220,7 +220,7 @@ It does. Although the hypothesis is that this approach would be extremely useful
 
 HAML usage is not the obligation, it is an opportunity. The idea is to provide a cheap way to experiment with look and feel for static websites. With libraries like Tachions it is just a matter of adding a few classes to an element. Once you've finished experimenting, simply update your site-wide CSS rules, and through away temporary HAML stuff, if needed.
 
-Look at the Clojure. Clojure code might look confusing and awful for an unprepared mind, but no doubts Clojure is a very powerful insrument. In Hamdown we consciously trade a bit of Markdown elegance for more possibilities.
+Look at the Clojure. Clojure code might look confusing and weird for an unprepared mind, but no doubts Clojure is a very powerful insrument. In Hamdown we consciously trade a bit of Markdown's elegance for more possibilities.
 
 > You can use plain HTML or ERB if Markdown is not enough
 
