@@ -141,7 +141,7 @@ defaults:
 ```
 ## Main Title
 
-<h2 class=“f2 courier strike”>Fancy title</h2>
+<h2 class=“f2 helvetica strike”>Fancy title</h2>
 
 Some content
 ```
@@ -173,7 +173,7 @@ Then you simply use haml as a main format, but switch to markdown when you have 
 ```
 %h1 Main Title
 
-%h2.f2.courier.strike Fancy title
+%h2.f2.helvetica.strike Fancy title
 
 :markdown
   Some content
