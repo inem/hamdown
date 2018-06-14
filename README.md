@@ -26,6 +26,11 @@ and have it transformed into:
 
 The suggestion is to develop a new format called Hamdown to combine the power of both Markdown and Haml.
 
+## Current status
+
+Proposal draft
+
+
 ## Key features of Hamdown: 
 
 1. Support both [Haml](http://haml.info/) and [Markdown](https://en.wikipedia.org/wiki/Markdown) in the same format
