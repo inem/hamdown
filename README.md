@@ -130,15 +130,6 @@ defaults:
 <p class="f6 purple m4 p2">More text</p>
 ```
 
-
-## Crazy experimental "extensions" ideas:
-
-1. Support charts generation from data in frontmatter
-2. Make pages dynamic, by allowing a viewer to (re)define some of the information from frontmatter while viewing the page
-3. Make pages aware of their destination on GH/GL/BB, generate and push commits when a checkbox is marked for example
-4. Plug public google spreadsheets as data sources
-
-
 ## Current alternatives (suck)
 
 ### 1. Plain HTML inside Markdown
