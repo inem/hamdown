@@ -1,6 +1,8 @@
 ## Why: To achieve hyper-efficiency when working on static websites.
 
-It is very efficient to use markdown with static site generators, like [Jekyll](https://jekyllrb.com/) or [Middleman](https://middlemanapp.com/). Although, sometimes markdown is not enough. For example, you want to add some custom styling with libraries like [Tachyons](https://tachyons.io/) or [TailwindCSS](https://tailwindcss.com/).
+It is very efficient to use Markdown with static site generators, like [Jekyll](https://jekyllrb.com/) or [Middleman](https://middlemanapp.com/). Although, sometimes Markdown is not enough. 
+
+For example, if you might want to add some custom styling with libraries like [Tachyons](https://tachyons.io/) or [TailwindCSS](https://tailwindcss.com/) to a certain element, there is no easy way to do that.
 
 It would be great to write something like this:
 
@@ -22,7 +24,9 @@ and have it transformed into:
 <p>Some content</p>
 ```
 
-## Key features: 
+The suggestion is to develop a new format called Hamdown to combine the power of both Markdown and Haml.
+
+## Key features of Hamdown: 
 
 1. Support both [Haml](http://haml.info/) and [Markdown](https://en.wikipedia.org/wiki/Markdown) in the same format
 2. Built-in [front-matter](https://jekyllrb.com/docs/frontmatter/) support
@@ -53,7 +57,7 @@ Resulting HTML:
 
 ### 2. Built-in front-matter support
 
-Now it is handled by static site generators. But I see no reason why it couldn't be a part of Hamdown.
+Now front-matter is handled by static site generators. But I see no reason why it couldn't be a part of Hamdown. This should significantly reduce the amount of work to be done by static site generator, and even remove need in them in simple cases.
 
 Hamdown:
 ```
@@ -177,8 +181,37 @@ Then you simply use haml as a main format, but switch to markdown when you have 
 
 As you see, all of the options have significant limitations. This is why Hamdown format and generator have to be developed.
 
+## Challenges
+
+Obviously there could be some clashes between Haml and Markdown generation rules. The general idea is to treat blocks starting with `.`, `%` like Haml, and blocks starting with `*`, `_`, `#`, `-`, and so on treat like Markdown.
+
+An example of conflict is "#" symbol. It is used in Haml for `id` attribute, and in Markdown as headers.
+
+A quick solution might be to prohibit ids in Haml part of Hamdown. Smarter solution would be to treat `#person_233 Max` as Haml, and `# Max` as Markdown
+
+Anyway, it makes sence to start with only a subset of Markdown features.
+
+## Roadmap
+
+- [ ] Proof of concept implementation of Hamdown
+- [ ] Describe a minimal subset of Markdown features to implement 
+- [ ] List all format conflicts and provide solutions
+- [ ] Develop specs
+
+## Contribution
+
+You are very welcome to contribute! Whether you'll write a spec, decide to develop a proof of concept of Hamdown, or share an idea of how to approach the development - it all would be very valuable.
+
+Idea author has no experience in template engines development. Although I am willing to educate myself and work on specification, I don't see myself as a main developer of Hamdown engine yet.
+
+## Implementation ideas
+
+1. Use [hamlit](https://github.com/k0kubun/hamlit) as a starting point, and implement additional conversion rules for markdown blocks
+2. [Your suggestion](https://github.com/inem/hamdown/issues/new)
+
+
 ## (Self-)Criticism
 
-Some might say that it goes against the idea of content and representation rules separation. It does. 
+Some might say that Hamdown goes against the idea of content and representation rules separation. It does. 
 
 Although the hypothesis is that this approach would be extremely useful for quick experiments and non-pretentious personal websites.
