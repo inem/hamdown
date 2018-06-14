@@ -41,7 +41,7 @@ Crazy experimental "extensions" ideas:
 
 ## Current alternatives (suck)
 
-1) **Plain HTML inside Markdown**
+### 1. Plain HTML inside Markdown
 
 ```
 ## Main Title
@@ -51,7 +51,7 @@ Crazy experimental "extensions" ideas:
 Some content
 ```
 
-2) **Template parsers chaining (.md.erb)**
+### 2. Template parsers chaining (.md.erb)
 
 Ruby on Rails brought the idea of template parsers chaining. Examples:
 
@@ -71,7 +71,7 @@ Limitations are obvious:
 - You have to define your helpers in a separate place first
 
 
-3) **Use markdown filters inside Haml**
+### 3. Use markdown filters inside Haml
 
 Then you simply use haml as a main format, but switch to markdown when you have big chunks of texts:
 
