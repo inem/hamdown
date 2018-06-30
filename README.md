@@ -1,3 +1,5 @@
+![](https://i.imgur.com/gIJomLl.png)
+
 ## Why: To achieve hyper-efficiency when working on static websites
 
 It is very efficient to use Markdown with static site generators, like [Jekyll](https://jekyllrb.com/) or [Middleman](https://middlemanapp.com/). Although, sometimes Markdown is not enough. 
