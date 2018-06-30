@@ -1,4 +1,4 @@
-![](https://i.imgur.com/gIJomLl.png)
+![Logo](https://i.imgur.com/n8UBf99.png)
 
 ## Why: To achieve hyper-efficiency when working on static websites
 
