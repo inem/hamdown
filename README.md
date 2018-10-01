@@ -153,6 +153,15 @@ defaults:
 Some content
 ```
 
+You can't do nested markdown inside HTML blocks:
+```
+<aside class="pic">
+  ![](https://i.imgur.com/rZ183q9.png)
+</aside>
+```
+
+^Markdown inside `<aside>` tag is treated like regular text.
+
 ### 2. Template parsers chaining (.md.erb)
 
 Ruby on Rails brought the idea of template parsers chaining. Examples:
