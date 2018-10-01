@@ -216,7 +216,8 @@ Idea author has no experience in template engines development. Although I am wil
 1. Use [hamlit](https://github.com/k0kubun/hamlit) as a starting point, and implement additional conversion rules for markdown blocks
 2. Convert hamdown to [kramdown](https://kramdown.gettalong.org/quickref.html) format, and then simply use kramdown to generate HTML
 3. Try Redcarpet Custom Renderers. 
-4. [Your suggestion](https://github.com/inem/hamdown/issues/new)
+4. [Reuse haml parser](https://github.com/inem/hamdown/issues/6)
+5. [Your suggestion](https://github.com/inem/hamdown/issues/new)
 
 
 ## Criticism
