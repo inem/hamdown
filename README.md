@@ -127,12 +127,6 @@ More text
 
 Resulting HTML:
 ```
----
-defaults: 
-  p: .f6.purple.m4.p2
-  h2: .f4.red
----
-
 <h1>Title</h1>
 <h2 class="f4 red">Subtitle</h2>
 
