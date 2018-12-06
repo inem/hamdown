@@ -1,0 +1,11 @@
+require: rubocop-rspec
+
+Rails:
+  Enabled: false
+
+AllCops:
+  TargetRubyVersion: 2.5.0
+
+AllCops:
+  Exclude:
+    - rspec/**/*
