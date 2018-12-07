@@ -189,8 +189,8 @@ RSpec.describe Hamdown::Machine do
             %div.some_class
               And one more
 
-              - Dashes work just as well
-              - And if you have sub points, put two spaces before the dash or star
+              * Dashes work just as well
+              * And if you have sub points, put two spaces before the dash or star
         EOL
 
         right_result = <<~EOL

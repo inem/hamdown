@@ -12,11 +12,19 @@ RSpec.describe Hamdown::MdRegs::UList do
           "    * Profit!\n"
         ],
         [
-          "\n    - Dashes work just as well\n    - And if you have sub points, put two spaces before the dash or star:\n      - Like this\n      - And this\n",
-          "      - And this\n"
+          "\n    + Dashes work just as well\n    + And if you have sub points, put two spaces before the dash or star:\n      + Like this\n      + And this\n",
+          "      + And this\n"
         ]
       ]
       expect(result).to eq(right_result)
+      # result.each_with_index do |res, i|
+      #   list = res.first.split("\n")
+      #   right_list = right_result[i].first.split("\n")
+      #   list.each_with_index do |item, j|
+      #     is_asserted_by { item == right_list[j] }
+      #   end
+      # end
+
     end
   end
 end

@@ -303,6 +303,23 @@ RSpec.describe Hamdown::MdHandler do
     end
   end
 
+  describe 'haml ruby code (with starting dash) remains ruby code' do
+    it 'replace text' do
+      text = <<~EOL
+        - test = 42
+        = puts test
+      EOL
+
+      right_result = <<~EOL
+        - test = 42
+        = puts test
+      EOL
+
+      result = described_class.perform(text)
+      expect(result).to eq(right_result)
+    end
+  end
+
   describe 'u_list' do
     it 'replace text' do
       text = <<~EOL
@@ -328,8 +345,8 @@ RSpec.describe Hamdown::MdHandler do
           div.some_class
             And one more
 
-            - Dashes work just as well
-            - And if you have sub points, put two spaces before the dash or star
+            * Dashes work just as well
+            * And if you have sub points, put two spaces before the dash or star
       EOL
 
       right_result = <<~EOL

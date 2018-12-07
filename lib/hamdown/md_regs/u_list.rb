@@ -5,7 +5,7 @@ module Hamdown
     class UList < AbstractReg
       # TODO: add '?:' to unuseful group /learn(?:bydoing)/
       REGS = {
-        'u_list' => /((^\s*[\*|\+|-] .*\n)+)/
+        'u_list' => /((^\s*[\*|\+] .*\n)+)/
       }.freeze
 
       private
