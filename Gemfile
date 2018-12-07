@@ -12,4 +12,5 @@ group :development do
   gem 'pry'
   gem 'rspec'
   gem 'rubocop-rspec'
+  gem 'rspec-power_assert'
 end

@@ -1,1 +1,2 @@
 --color
+-r rspec-power_assert
