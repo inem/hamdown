@@ -4,7 +4,7 @@ require_relative 'haml_handler'
 module Hamdown
   # Main module
   # Mahine to compile hamdown text to html
-  module Machine
+  module Engine
     # It takes string with hamdown text and compile it to html
     def self.perform(hd_text = '')
       return '' if hd_text.size == 0
