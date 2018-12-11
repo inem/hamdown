@@ -20,31 +20,18 @@ Each reg_ex should return flat array
 
 ### Add nested lists markdown feature
 
-In the current implementation nested list are not supportable
+In the current implementation nested lists are not supported
 
 ## Prediction errors by parsing text
 
-How to predict errors and print an message as `ParceError: invalid text at line 22.`
+Not sure how to predict errors and print an message as `ParceError: invalid text at line 22.`
 
-## Limitation
-
-### Variables does not support
-
-It does not supports
-
-```haml
-- user_id = 123
-```
-
-it seems like <li> for MdHandler
-
-```ruby
-str = "- user_id = 123\n%a{ href: \"/users/\#{user_id}\" }\n"
-```
+## Limitations
 
 ### Hamlit does not work with nested HTML-tags
 
 It raises an error: `Illegal nesting: nesting within plain text is illegal. (Hamlit::HamlSyntaxError)`
+Maybe we should use `:plain` filter when there's a need in nested HTML
 
 ## Resources
 
