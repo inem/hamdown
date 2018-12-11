@@ -11,7 +11,7 @@ module Hamdown
       end
 
       content = File.open(file_path, 'r').read
-      output = Machine.perform(content)
+      output = Engine.perform(content)
       puts output
     end
   end

@@ -1,6 +1,6 @@
 require "spec_helper"
 
-RSpec.describe Hamdown::Machine do
+RSpec.describe Hamdown::Engine do
   describe 'perform' do
     it 'works with empty string' do
       result = described_class.perform('')
