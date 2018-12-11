@@ -3,7 +3,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
 
   s.name = 'hamdown-engine'
-  s.version = '0.1.1'
+  s.version = '0.1.2'
   s.date = '2018-12-11'
 
   s.description = "Next generation template language for fans of Haml and Markdown"
@@ -32,6 +32,9 @@ Gem::Specification.new do |s|
     lib/hamdown/md_regs/u_list.rb
   ]
   # = MANIFEST =
+
+  s.add_runtime_dependency 'markdown'
+  s.add_runtime_dependency 'haml'
 
   s.executables = ['hamdown']
 
