@@ -121,6 +121,27 @@ RSpec.describe Hamdown::MdHandler do
     end
   end
 
+  describe 'headers' do
+    it 'works with few headers' do
+      text = <<~EOL
+        # header
+        ## header
+        ### header
+        #### header
+      EOL
+
+      right_result = <<~EOL
+        <h1 id="header">header</h1>
+        <h2 id="header">header</h2>
+        <h3 id="header">header</h3>
+        <h4 id="header">header</h4>
+      EOL
+
+      result = described_class.perform(text)
+      expect(result).to eq(right_result)
+    end
+  end
+
   describe 'bold' do
     it 'replace bold text' do
       text = <<~EOL
