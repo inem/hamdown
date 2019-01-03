@@ -121,6 +121,27 @@ RSpec.describe Hamdown::MdHandler do
     end
   end
 
+  describe 'headers' do
+    it 'works with few headers' do
+      text = <<~EOL
+        # header
+        ## header
+        ### header
+        #### header
+      EOL
+
+      right_result = <<~EOL
+        <h1 id="header">header</h1>
+        <h2 id="header">header</h2>
+        <h3 id="header">header</h3>
+        <h4 id="header">header</h4>
+      EOL
+
+      result = described_class.perform(text)
+      expect(result).to eq(right_result)
+    end
+  end
+
   describe 'bold' do
     it 'replace bold text' do
       text = <<~EOL
@@ -303,6 +324,23 @@ RSpec.describe Hamdown::MdHandler do
     end
   end
 
+  describe 'haml ruby code (with starting dash) remains ruby code' do
+    it 'replace text' do
+      text = <<~EOL
+        - test = 42
+        = puts test
+      EOL
+
+      right_result = <<~EOL
+        - test = 42
+        = puts test
+      EOL
+
+      result = described_class.perform(text)
+      expect(result).to eq(right_result)
+    end
+  end
+
   describe 'u_list' do
     it 'replace text' do
       text = <<~EOL
@@ -328,8 +366,8 @@ RSpec.describe Hamdown::MdHandler do
           div.some_class
             And one more
 
-            - Dashes work just as well
-            - And if you have sub points, put two spaces before the dash or star
+            * Dashes work just as well
+            * And if you have sub points, put two spaces before the dash or star
       EOL
 
       right_result = <<~EOL

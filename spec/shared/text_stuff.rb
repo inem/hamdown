@@ -38,10 +38,10 @@ RSpec.shared_context "text stuff", :shared_context => :metadata do
 
           Alternatively,
 
-          - Dashes work just as well
-          - And if you have sub points, put two spaces before the dash or star:
-            - Like this
-            - And this
+          + Dashes work just as well
+          + And if you have sub points, put two spaces before the dash or star:
+            + Like this
+            + And this
 
           Inline code:
 

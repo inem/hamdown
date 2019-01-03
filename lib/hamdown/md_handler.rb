@@ -1,7 +1,13 @@
 require 'markdown'
-Dir["lib/hamdown/md_regs/*.rb"].each do |f|
-  require_relative f.gsub('lib/hamdown/', '')
-end
+require_relative 'md_regs/abstract_reg'
+require_relative 'md_regs/code'
+require_relative 'md_regs/fonts'
+require_relative 'md_regs/fonts2'
+require_relative 'md_regs/headers'
+require_relative 'md_regs/images'
+require_relative 'md_regs/o_list'
+require_relative 'md_regs/quotes'
+require_relative 'md_regs/u_list'
 
 module Hamdown
   # Module to recognize markdown patterns in text and compile it to html
