@@ -1,7 +1,6 @@
 module Hamdown
   module MdRegs
     # class with logic of markdown's headers
-    # TODO: rewrite
     class Headers < AbstractReg
       REGS = {
         'h1' => /^\s*# .+$/,

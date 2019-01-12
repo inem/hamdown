@@ -1,4 +1,6 @@
 :markdown
-  # This is an <h1>
+  ![This is the alt-attribute for my image](http://imgur.com/myimage.jpg "An optional title")
 
-%a{ href: 'http://github.com' } GitHub  sdfsfsdf
+  ![](/images/main.png)
+
+  ![Hello](/images/main.png)

@@ -415,7 +415,28 @@ RSpec.describe Hamdown::MdHandler do
       right_result = <<~EOL
         If you want to embed images, this is how you do it:
 
-        <p><img src="https://octodex.github.com/images/yaktocat.png" alt="Image of Yaktocat" /></p>
+        <img src="https://octodex.github.com/images/yaktocat.png" alt="Image of Yaktocat" />
+      EOL
+
+      result = described_class.perform(text)
+      expect(result).to eq(right_result)
+    end
+  end
+
+  describe 'image with title' do
+    it 'replace text' do
+      text = <<~EOL
+        ![This is the alt-attribute for my image](http://imgur.com/myimage.jpg "An optional title")
+
+        %p
+          ![One more image](http://imgur.com/myimage.jpg "An optional title")
+      EOL
+
+      right_result = <<~EOL
+        <img src="http://imgur.com/myimage.jpg" alt="This is the alt-attribute for my image" title="An optional title" />
+
+        %p
+          <img src="http://imgur.com/myimage.jpg" alt="One more image" title="An optional title" />
       EOL
 
       result = described_class.perform(text)

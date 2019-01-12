@@ -245,7 +245,7 @@ RSpec.describe Hamdown::Engine do
           <h1>Title</h1>
           <h2>Subtitle</h2>
           <div class='content'>
-          <p><img src="/images/main.png" alt="" /></p>
+          <img src="/images/main.png" alt="" />
           </div>
           </section>
         EOL
@@ -297,7 +297,7 @@ RSpec.describe Hamdown::Engine do
           <div class='main'>
           <ul><li>Item 1</li><li>Item 2</li></ul>
           <div id='my_id'>
-          <p><img src="/images/logo.png" alt="GitHub Logo" /></p>
+          <img src="/images/logo.png" alt="GitHub Logo" />
           <ol><li>Item 1</li><li>Item 2</li><li>Item 3</li></ol>
           </div>
           <a class='bar' href='#' title='Bar'>Hello</a>

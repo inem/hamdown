@@ -3,7 +3,7 @@ BASIC:
 1) encode HTML entities in Ruby
 
 
-HEADING:
+HEADING:!
 =============
 # This is an <h1>
 ## This is an <h2>
@@ -16,13 +16,13 @@ HEADING:
 ALTERNATIVE HEADING:
 =============
 This is an h1
-=============
+==
 
 This is an h2
--------------
+--
 
 
-SIMPLE TEXT STYLES:
+SIMPLE TEXT STYLES:!
 =============
 *This text is in italics.* -> <em></em>
 _And so is this text._ -> <em></em>
@@ -35,18 +35,18 @@ __And so is this text.__ -> <strong></strong>
 *__And this!__* -> <strong><em></em></strong>
 
 
-LINKS:
+LINKS:!
 =============
 [Click me!](http://test.com/) -> a,href,text
 [Click me!](http://test.com/ "Link to Test.com") -> a,href,title,text
 [Go to music](/music/). -> a,href,title
 
 
-IMAGES:
+IMAGES:!
 =============
 ![This is the alt-attribute for my image](http://imgur.com/myimage.jpg "An optional title") -> img,src,alt,title
 
-INLINE CODE:
+INLINE CODE:!
 =============
 `go_to()` -> <code></code>
 

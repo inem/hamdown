@@ -1,9 +1,7 @@
 module Hamdown
   module MdRegs
     # class with logic of markdown's italic and monospace text
-    # TODO: rewrite
     class Fonts2 < AbstractReg
-      # TODO: add '?:' to unuseful group /learn(?:bydoing)/
       REGS = {
         'italic' => /((?<!\*|\\)[\*|\_][^\*\n\_].+?[^\*|\\\_][\*|\_](?!\*))/,
         'monospace' => /[^`](`[^`]+`)/
