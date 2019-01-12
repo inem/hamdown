@@ -177,3 +177,4 @@ GitHub.sublime-settings
 .history
 
 # End of https://www.gitignore.io/api/ruby,rubymine,sublimetext,visualstudiocode
+.rspec_status
