@@ -11,10 +11,10 @@ RSpec.describe Hamdown::MdHandler do
       EOL
 
       right_result = <<~EOL
-        <h1 id="hello-it-is-title">Hello it is title</h1>
+        <h1>Hello it is title</h1>
 
 
-        <h1 id="it-is-second-title">It is second title</h1>
+        <h1>It is second title</h1>
       EOL
 
       result = described_class.perform(text)
@@ -30,10 +30,10 @@ RSpec.describe Hamdown::MdHandler do
       EOL
 
       right_result = <<~EOL
-        <h1 id="hello-it-is-title">Hello it is title</h1>
+        <h1>Hello it is title</h1>
 
         .home_haml
-          <h1 id="it-is-second-title">It is second title</h1>
+          <h1>It is second title</h1>
       EOL
 
       result = described_class.perform(text)
@@ -51,10 +51,10 @@ RSpec.describe Hamdown::MdHandler do
       EOL
 
       right_result = <<~EOL
-        <h2 id="hello-it-is-title">Hello it is title</h2>
+        <h2>Hello it is title</h2>
 
 
-        <h2 id="it-is-second-title">It is second title</h2>
+        <h2>It is second title</h2>
       EOL
 
       result = described_class.perform(text)
@@ -70,10 +70,10 @@ RSpec.describe Hamdown::MdHandler do
       EOL
 
       right_result = <<~EOL
-        <h2 id="hello-it-is-title">Hello it is title</h2>
+        <h2>Hello it is title</h2>
 
         .home_haml
-          <h2 id="it-is-second-title">It is second title</h2>
+          <h2>It is second title</h2>
       EOL
 
       result = described_class.perform(text)
@@ -84,17 +84,17 @@ RSpec.describe Hamdown::MdHandler do
   describe 'h5' do
     it 'can replace it' do
       text = <<~EOL
-        ##### Hello it is title
+        ##### Hello it is title <h5>
 
 
         ##### It is second title
       EOL
 
       right_result = <<~EOL
-        <h5 id="hello-it-is-title">Hello it is title</h5>
+        <h5>Hello it is title &lt;h5&gt;</h5>
 
 
-        <h5 id="it-is-second-title">It is second title</h5>
+        <h5>It is second title</h5>
       EOL
 
       result = described_class.perform(text)
@@ -110,10 +110,10 @@ RSpec.describe Hamdown::MdHandler do
       EOL
 
       right_result = <<~EOL
-        <h5 id="hello-it-is-title">Hello it is title</h5>
+        <h5>Hello it is title</h5>
 
         .home_haml
-          <h5 id="it-is-second-title">It is second title</h5>
+          <h5>It is second title</h5>
       EOL
 
       result = described_class.perform(text)
@@ -131,10 +131,10 @@ RSpec.describe Hamdown::MdHandler do
       EOL
 
       right_result = <<~EOL
-        <h1 id="header">header</h1>
-        <h2 id="header">header</h2>
-        <h3 id="header">header</h3>
-        <h4 id="header">header</h4>
+        <h1>header</h1>
+        <h2>header</h2>
+        <h3>header</h3>
+        <h4>header</h4>
       EOL
 
       result = described_class.perform(text)
@@ -145,13 +145,13 @@ RSpec.describe Hamdown::MdHandler do
   describe 'bold' do
     it 'replace bold text' do
       text = <<~EOL
-        Some some text with bold **typing lolol** =)
+        Some some text with bold **<addr> lolol** =)
 
         **bold again**
       EOL
 
       right_result = <<~EOL
-        Some some text with bold <strong>typing lolol</strong> =)
+        Some some text with bold <strong>&lt;addr&gt; lolol</strong> =)
 
         <strong>bold again</strong>
       EOL
@@ -164,20 +164,26 @@ RSpec.describe Hamdown::MdHandler do
   describe 'italic' do
     it 'replace italic text' do
       text = <<~EOL
-        Some some text with italic *typing lolol* =)
+        Some some text with italic *<addr> lolol* =)
+        Some some text with italic _typing lolol_ =)
 
         *italic again*
+        _italic again_
 
         p.p1
           *nested italic again*
+          _nested italic again_
       EOL
 
       right_result = <<~EOL
+        Some some text with italic <em>&lt;addr&gt; lolol</em> =)
         Some some text with italic <em>typing lolol</em> =)
 
         <em>italic again</em>
+        <em>italic again</em>
 
         p.p1
+          <em>nested italic again</em>
           <em>nested italic again</em>
       EOL
 
@@ -211,12 +217,18 @@ RSpec.describe Hamdown::MdHandler do
         Some some text with inline code `<addr>` =)
 
         `12 + 12 / 2`
+
+        %p
+          `12 + 12 / 3`
       EOL
 
       right_result = <<~EOL
         Some some text with inline code <code>&lt;addr&gt;</code> =)
 
         <code>12 + 12 / 2</code>
+
+        %p
+          <code>12 + 12 / 3</code>
       EOL
 
       result = described_class.perform(text)
@@ -429,6 +441,56 @@ RSpec.describe Hamdown::MdHandler do
           Hello it is a link to <a href="http://github.com#1">GitHub</a>
 
         Hello it is a link to <a href="http://github.com">GitHub</a>
+      EOL
+
+      result = described_class.perform(text)
+      expect(result).to eq(right_result)
+    end
+  end
+
+  describe 'link with title' do
+    it 'replace text' do
+      text = <<~EOL
+        Hello it is a link to [GitHub](http://github.com "Link to Test.com")
+
+        div.container
+          Hello it is a link to [GitHub](http://github.com#1 "Link to Test.com")
+
+        Hello it is a link to [GitHub](http://github.com "Link to Test.com")
+      EOL
+
+      right_result = <<~EOL
+        Hello it is a link to <a href="http://github.com" title="Link to Test.com">GitHub</a>
+
+        div.container
+          Hello it is a link to <a href="http://github.com#1" title="Link to Test.com">GitHub</a>
+
+        Hello it is a link to <a href="http://github.com" title="Link to Test.com">GitHub</a>
+      EOL
+
+      result = described_class.perform(text)
+      expect(result).to eq(right_result)
+    end
+  end
+
+  describe 'relative link' do
+    it 'replace text' do
+      text = <<~EOL
+        Hello it is a link to [Go to music](/music/)
+
+        div.container
+          Hello it is a link to [Go to music](/music/#1)
+
+        Hello it is a link to [Go to music](/music/)
+      EOL
+
+      right_result = <<~EOL
+        Hello it is a link to <a href="/music/">Go to music</a>
+
+        div.container
+          Hello it is a link to <a href="/music/#1">Go to music</a>
+
+        Hello it is a link to <a href="/music/">Go to music</a>
       EOL
 
       result = described_class.perform(text)

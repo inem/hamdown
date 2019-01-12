@@ -1,6 +1,7 @@
 module Hamdown
   module MdRegs
     # class with logic of markdown's code block
+    # TODO: rewrite
     class Code < AbstractReg
       REGS = {
         'code' => /```[^`]*```/
@@ -8,7 +9,7 @@ module Hamdown
 
       private
 
-      def text_handler(text, scan_res)
+      def text_handler(text, scan_res, reg_name)
         html_scan = scan_res.map do |i|
           # delete spaces before last '```'
           # and other unused symbols

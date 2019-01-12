@@ -1,6 +1,7 @@
 module Hamdown
   module MdRegs
     # class with logic of markdown's headers
+    # TODO: rewrite
     class Headers < AbstractReg
       REGS = {
         'h1' => /^\s*# .+$/,
@@ -13,15 +14,10 @@ module Hamdown
 
       private
 
-      def text_handler(text, scan_res)
+      def text_handler(text, scan_res, reg_name)
         html_scan = scan_res.map do |i|
-          # delete whitespace character
-          s = md_to_html(i.gsub(/^\s*/, ''))
-          # delete \n at end of line
-          if s[-1..-1] == "\n"
-            s = s[0..s.size - 2]
-          end
-          s
+          s = i.sub(/^\s*\#{1,6}\s{1}/, '')
+          s = "<#{reg_name}>#{CGI.escapeHTML(s)}</#{reg_name}>"
         end
         scan_res.each_with_index do |str, index|
           text.sub!(

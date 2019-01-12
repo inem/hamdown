@@ -1,22 +1,29 @@
 module Hamdown
   module MdRegs
     # class with logic of markdown's italic and monospace text
+    # TODO: rewrite
     class Fonts2 < AbstractReg
       # TODO: add '?:' to unuseful group /learn(?:bydoing)/
       REGS = {
-        'italic' => /((?<!\*|\\)\*[^\*\n].+?[^\*|\\]\*(?!\*))|(_.+?_)/,
+        'italic' => /((?<!\*|\\)[\*|\_][^\*\n\_].+?[^\*|\\\_][\*|\_](?!\*))/,
         'monospace' => /[^`](`[^`]+`)/
       }.freeze
 
       private
 
-      def text_handler(text, scan_res)
+      def text_handler(text, scan_res, reg_name)
         scan_res = scan_res.map { |i| i[0] }.reject{ |i| i.nil? }
         html_scan = scan_res.map do |i|
-          s = md_to_html(i)
-          # delete <p> in start and end of line
-          s = s[3, s.size]
-          s = s[0..s.size - 6]
+          s = ''
+          if reg_name == 'italic'
+            s = i.sub(/^[\*|\_]/, '')
+                 .sub(/[\*|\_]$/, '')
+            s = "<em>#{CGI.escapeHTML(s)}</em>"
+          elsif reg_name == 'monospace'
+            s = i.sub(/^\`/, '')
+                 .sub(/\`$/, '')
+            s = "<code>#{CGI.escapeHTML(s)}</code>"
+          end
           s
         end
         scan_res.each_with_index do |str, index|

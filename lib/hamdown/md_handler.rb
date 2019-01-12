@@ -1,4 +1,6 @@
 require 'markdown'
+require 'cgi'
+# TODO: escape html with cgi
 require_relative 'md_regs/abstract_reg'
 require_relative 'md_regs/code'
 require_relative 'md_regs/fonts'
@@ -10,7 +12,7 @@ require_relative 'md_regs/quotes'
 require_relative 'md_regs/u_list'
 
 module Hamdown
-  # Module to recognize markdown patterns in text and compile it to html
+  # Module to recognize markdown patterns in text and compile it to html/haml
   module MdHandler
     # list of objects with rules:
     # how to recognize markdown patterns by reg_ex

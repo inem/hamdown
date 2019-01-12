@@ -46,10 +46,10 @@ RSpec.describe Hamdown::Engine do
         EOL
 
         right_result = <<~EOL
-          <h2 id="hello-it-is-title">Hello it is title</h2>
+          <h2>Hello it is title</h2>
           <p>
-          <h2 id="it-is-second-title">It is second title</h2>
-          <h3 id="and-title-again">And title again</h3>
+          <h2>It is second title</h2>
+          <h3>And title again</h3>
           </p>
         EOL
 
@@ -235,15 +235,15 @@ RSpec.describe Hamdown::Engine do
               ![](/images/main.png)
         EOL
         right_result = <<~EOL
-          <h1 id="main-title">Main Title</h1>
+          <h1>Main Title</h1>
           <h2 class='f2 helvetica strike'>
           Fancy title
           <strong>with some bold</strong>
           </h2>
           Some content
           <section class='container'>
-          <h1 id="title">Title</h1>
-          <h2 id="subtitle">Subtitle</h2>
+          <h1>Title</h1>
+          <h2>Subtitle</h2>
           <div class='content'>
           <p><img src="/images/main.png" alt="" /></p>
           </div>
@@ -289,7 +289,7 @@ RSpec.describe Hamdown::Engine do
           <!-- This is what a comment looks like in Haml. -->
           <body>
           <header>
-          <h1 id="hello">Hello</h1>
+          <h1>Hello</h1>
           </header>
           <p>
           It's very easy to make some words <strong>bold</strong> and other words <em>italic</em> with Markdown. You can even <a href="http://google.com">link to Google!</a>

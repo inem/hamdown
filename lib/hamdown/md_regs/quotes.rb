@@ -1,6 +1,7 @@
 module Hamdown
   module MdRegs
     # class with logic of markdown's quotes
+    # TODO: rewrite
     class Quotes < AbstractReg
       # TODO: add '?:' to unuseful group /learn(?:bydoing)/
       REGS = {
@@ -9,7 +10,7 @@ module Hamdown
 
       private
 
-      def text_handler(text, scan_res)
+      def text_handler(text, scan_res, reg_name)
         # crazy manipulation
         scan_res = scan_res.map{ |i| i[0] }
         html_scan = scan_res.map do |i|

@@ -11,11 +11,11 @@ module Hamdown
       REGS = {}
 
       def perform(text = '')
-        regs_arr.each do |reg|
+        regs_hash.each do |reg_name, reg|
           scan_res = text.scan(reg).to_a
           next if scan_res.size == 0
 
-          text = text_handler(text, scan_res)
+          text = text_handler(text, scan_res, reg_name)
         end
         text
       end
@@ -32,6 +32,10 @@ module Hamdown
 
       def regs_arr
         self.class::REGS.values
+      end
+
+      def regs_hash
+        self.class::REGS
       end
     end
   end
