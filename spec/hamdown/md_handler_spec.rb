@@ -254,13 +254,7 @@ RSpec.describe Hamdown::MdHandler do
       right_result = <<~EOL
         Some some text with inline code <code>&lt;addr&gt;</code> =)
 
-        :markdown
-          ```ruby
-          class A; end
-          def foo(i)
-            return i + 1
-          end
-          ```
+        <pre lang=\"ruby\"><code>class A; end&#10;def foo(i)&#10;  return i + 1&#10;end&#10;</code></pre>
 
         <code>12 + 12 / 2</code>
       EOL
@@ -282,13 +276,7 @@ RSpec.describe Hamdown::MdHandler do
 
       right_result = <<~EOL
         %div.my_class
-          :markdown
-            ```ruby
-            class A; end
-            def foo(i)
-              return i + 1
-            end
-            ```
+          <pre lang="ruby"><code>  class A; end&#10;  def foo(i)&#10;    return i + 1&#10;  end&#10;</code></pre>
       EOL
 
       result = described_class.perform(text)
