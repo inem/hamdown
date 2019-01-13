@@ -101,33 +101,33 @@ RSpec.describe Hamdown::Engine do
         expect(result).to eq(right_result)
       end
 
-      # it 'works with code block' do
-      #   text = <<~EOL
-      #     ```ruby
-      #     class A; end
-      #     def foo(i)
-      #       return i + 1
-      #     end
-      #     ```
+      it 'works with code block' do
+        text = <<~EOL
+          ```ruby
+          class A; end
+          def foo(i)
+            return i + 1
+          end
+          ```
 
-      #     %div.container
-      #       ```ruby
-      #       class A; end
-      #       def foo(i)
-      #         return i + 1
-      #       end
-      #       ```
-      #   EOL
-      #   right_result = <<~EOL
-      #     <pre lang=\"ruby\"><code>class A; end&#10;def foo(i)&#10;  return i + 1&#10;end&#10;</code></pre>
-      #     <div class='container'>
-      #     <pre lang=\"ruby\"><code>  class A; end&#10;  def foo(i)&#10;    return i + 1&#10;  end&#10;</code></pre>
-      #     </div>
-      #   EOL
+          %div.container
+            ```ruby
+            class A; end
+            def foo(i)
+              return i + 1
+            end
+            ```
+        EOL
+        right_result = <<~EOL
+          <pre lang=\"ruby\"><code>class A; end&#10;def foo(i)&#10;  return i + 1&#10;end&#10;</code></pre>
+          <div class='container'>
+          <pre lang=\"ruby\"><code>  class A; end&#10;  def foo(i)&#10;    return i + 1&#10;  end&#10;</code></pre>
+          </div>
+        EOL
 
-      #   result = described_class.perform(text)
-      #   expect(result).to eq(right_result)
-      # end
+        result = described_class.perform(text)
+        expect(result).to eq(right_result)
+      end
 
       it 'works with o_list' do
         text = <<~EOL

@@ -24,6 +24,10 @@ module Hamdown
         raise 'Does not implemented'
       end
 
+      def md_to_html(text = '')
+        Markdown.new(text, banner: false).to_html
+      end
+
       def regs_arr
         self.class::REGS.values
       end
