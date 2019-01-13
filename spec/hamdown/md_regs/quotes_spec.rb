@@ -7,7 +7,7 @@ RSpec.describe Hamdown::MdRegs::Quotes do
     result = main_text.scan(described_class::REGS['quotes']).to_a
     right_result = [
       [
-        "\n    > We're living the future so\n    > the present is our past.\n",
+        "    > We're living the future so\n    > the present is our past.\n",
         "    > the present is our past.\n"
       ]
     ]

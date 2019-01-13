@@ -1,18 +1,17 @@
 module Hamdown
   module MdRegs
-    # class with logic of markdown's images
-    class Images < AbstractReg
+    # class with logic of markdown's ordered lists
+    class List < AbstractReg
       REGS = {
-        'image' => /!\[[^\[\]]*?\]\([^\s]*?\)/
+        'list' => /((^ *[\d{1,3}|\*|\+]\.? .*\n?)+)/
       }.freeze
 
       private
 
       def text_handler(text, scan_res, reg_name)
+        scan_res = scan_res.map{ |i| i[0] }
         html_scan = scan_res.map do |i|
-          s_src = i.scan(/!\[[^\[\]]*?\]\(([^\s]*)?\)/).to_a.flatten[0]
-          s_alt = i.scan(/\[([^\[\]]*?)\]\([^\s]*?\)/).to_a.flatten[0]
-          "<img src=\"#{s_src}\" alt=\"#{s_alt}\" />"
+          prepend_markdown_filter(i)
         end
         scan_res.each_with_index do |str, index|
           text.sub!(str, html_scan[index])

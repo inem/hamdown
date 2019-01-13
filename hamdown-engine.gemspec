@@ -24,12 +24,13 @@ Gem::Specification.new do |s|
     lib/hamdown/md_regs/abstract_reg.rb
     lib/hamdown/md_regs/code.rb
     lib/hamdown/md_regs/fonts.rb
+    lib/hamdown/md_regs/links.rb
     lib/hamdown/md_regs/fonts2.rb
     lib/hamdown/md_regs/headers.rb
     lib/hamdown/md_regs/images.rb
-    lib/hamdown/md_regs/o_list.rb
+    lib/hamdown/md_regs/images_with_title.rb
+    lib/hamdown/md_regs/list.rb
     lib/hamdown/md_regs/quotes.rb
-    lib/hamdown/md_regs/u_list.rb
   ]
   # = MANIFEST =
 

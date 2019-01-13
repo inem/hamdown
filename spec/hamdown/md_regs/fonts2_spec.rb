@@ -6,7 +6,7 @@ RSpec.describe Hamdown::MdRegs::Fonts2 do
   describe 'italic' do
     it 'match words' do
       result = main_text.scan(described_class::REGS['italic']).to_a
-      right_result = [['*italic*', nil]]
+      right_result = [['*italic*']]
       expect(result).to eq(right_result)
     end
   end
