@@ -9,6 +9,7 @@ module Hamdown
 
       private
 
+      # TODO: refactoring
       def text_handler(text, scan_res, reg_name)
         html_scan = scan_res.map do |i|
           s = ''
@@ -25,7 +26,7 @@ module Hamdown
           s
         end
         scan_res.each_with_index do |str, index|
-          text.gsub!(str, html_scan[index])
+          text.sub!(str, html_scan[index])
         end
 
         text

@@ -16,11 +16,11 @@ module Hamdown
       def text_handler(text, scan_res, reg_name)
         html_scan = scan_res.map do |i|
           s = i.sub(/^\s*\#{1,6}\s{1}/, '')
-          s = "<#{reg_name}>#{CGI.escapeHTML(s)}</#{reg_name}>"
+          s = "<#{reg_name}>#{escape_html(s)}</#{reg_name}>"
         end
         scan_res.each_with_index do |str, index|
           text.sub!(
-            str.gsub(/^\s*/, ''),
+            str.sub(/^\s*/, ''),
             html_scan[index]
           )
         end

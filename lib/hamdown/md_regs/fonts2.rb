@@ -9,6 +9,7 @@ module Hamdown
 
       private
 
+      # TODO: refactoring
       def text_handler(text, scan_res, reg_name)
         scan_res = scan_res.map { |i| i[0] }.reject{ |i| i.nil? }
         html_scan = scan_res.map do |i|
@@ -16,16 +17,16 @@ module Hamdown
           if reg_name == 'italic'
             s = i.sub(/^[\*|\_]/, '')
                  .sub(/[\*|\_]$/, '')
-            s = "<em>#{CGI.escapeHTML(s)}</em>"
+            s = "<em>#{escape_html(s)}</em>"
           elsif reg_name == 'monospace'
             s = i.sub(/^\`/, '')
                  .sub(/\`$/, '')
-            s = "<code>#{CGI.escapeHTML(s)}</code>"
+            s = "<code>#{escape_html(s)}</code>"
           end
           s
         end
         scan_res.each_with_index do |str, index|
-          text.gsub!(str, html_scan[index])
+          text.sub!(str, html_scan[index])
         end
 
         text

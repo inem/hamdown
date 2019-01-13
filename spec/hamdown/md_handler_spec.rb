@@ -254,7 +254,13 @@ RSpec.describe Hamdown::MdHandler do
       right_result = <<~EOL
         Some some text with inline code <code>&lt;addr&gt;</code> =)
 
-        <pre lang=\"ruby\"><code>class A; end&#10;def foo(i)&#10;  return i + 1&#10;end&#10;</code></pre>
+        :markdown
+          ```ruby
+          class A; end
+          def foo(i)
+            return i + 1
+          end
+          ```
 
         <code>12 + 12 / 2</code>
       EOL
@@ -276,7 +282,13 @@ RSpec.describe Hamdown::MdHandler do
 
       right_result = <<~EOL
         %div.my_class
-          <pre lang=\"ruby\"><code>  class A; end&#10;  def foo(i)&#10;    return i + 1&#10;  end&#10;</code></pre>
+          :markdown
+            ```ruby
+            class A; end
+            def foo(i)
+              return i + 1
+            end
+            ```
       EOL
 
       result = described_class.perform(text)
@@ -315,20 +327,31 @@ RSpec.describe Hamdown::MdHandler do
       right_result = <<~EOL
         Sometimes you want numbered lists:
 
-        <ol><li>One</li><li>Two</li><li>Three</li><li>Four</li></ol>
+        :markdown
+          1. One
+          2. Two
+          3. Three
+          4. Four
 
         div.container
           It can be nested
 
-          <ol><li>One (B)</li><li>Two (B)</li></ol>
+          :markdown
+            1. One (B)
+            2. Two (B)
 
-          <ol><li>One (B2)</li><li>Two (B2)</li><li>Three (B2)</li></ol>
+          :markdown
+            1. One (B2)
+            2. Two (B2)
+            3. Three (B2)
 
         div.container
           div.some_class
             And one more
 
-            <ol><li>One (C)</li><li>Two (C)</li></ol>
+            :markdown
+              1. One (C)
+              2. Two (C)
       EOL
 
       result = described_class.perform(text)
@@ -384,19 +407,119 @@ RSpec.describe Hamdown::MdHandler do
 
       right_result = <<~EOL
         Sometimes you want unnumbered lists:
-        <ul><li>One (A)</li><li>Two (A)</li><li>Three (A)</li></ul>
+
+        :markdown
+          * One (A)
+          * Two (A)
+          * Three (A)
 
         div.container
           It can be nested
-          <ul><li>One (B)</li><li>Two (B)</li></ul>
+
+          :markdown
+            * One (B)
+            * Two (B)
 
           Title
-          <ul><li>One (B2)</li><li>Two (B2)</li><li>Three (B2)</li></ul>
+
+          :markdown
+            * One (B2)
+            * Two (B2)
+            * Three (B2)
 
         div.container
           div.some_class
             And one more
-            <ul><li>Dashes work just as well</li><li>And if you have sub points, put two spaces before the dash or star</li></ul>
+
+            :markdown
+              * Dashes work just as well
+              * And if you have sub points, put two spaces before the dash or star
+      EOL
+
+      result = described_class.perform(text)
+      expect(result).to eq(right_result)
+    end
+  end
+
+  describe 'nested lists' do
+    it 'replace text' do
+      text = <<~EOL
+        * Item 1
+        * Item 2
+        * Item 3
+            + Item 3a
+            + Item 3b
+            + Item 3c
+
+        * Item 1
+        * Item 2
+        * Item 3
+            * Item 3a
+            * Item 3b
+            * Item 3c
+
+        1. Step 1
+        2. Step 2
+        3. Step 3
+            1. Step 3.1
+            2. Step 3.2
+            3. Step 3.3
+
+        1. Step 1
+        2. Step 2
+        3. Step 3
+            * Item 3a
+            * Item 3b
+            * Item 3c
+
+        + Item 1
+        + Item 2
+        + Item 3
+          1. Step 3.1
+          2. Step 3.2
+          3. Step 3.3
+      EOL
+
+      right_result = <<~EOL
+        :markdown
+          * Item 1
+          * Item 2
+          * Item 3
+              + Item 3a
+              + Item 3b
+              + Item 3c
+
+        :markdown
+          * Item 1
+          * Item 2
+          * Item 3
+              * Item 3a
+              * Item 3b
+              * Item 3c
+
+        :markdown
+          1. Step 1
+          2. Step 2
+          3. Step 3
+              1. Step 3.1
+              2. Step 3.2
+              3. Step 3.3
+
+        :markdown
+          1. Step 1
+          2. Step 2
+          3. Step 3
+              * Item 3a
+              * Item 3b
+              * Item 3c
+
+        :markdown
+          + Item 1
+          + Item 2
+          + Item 3
+            1. Step 3.1
+            2. Step 3.2
+            3. Step 3.3
       EOL
 
       result = described_class.perform(text)
@@ -533,18 +656,22 @@ RSpec.describe Hamdown::MdHandler do
 
           > Hello, how are you?
           > I am fine!
-
       EOL
 
       right_result = <<~EOL
         As Kanye West said:
 
-        <blockquote>   <p>We are living the future so the present is our past.</p> </blockquote>
+        :markdown
+          > We are living the future so
+          > the present is our past.
+
 
         %div.container
           Second quote:
 
-          <blockquote>   <p>Hello, how are you? I am fine!</p> </blockquote>
+          :markdown
+            > Hello, how are you?
+            > I am fine!
       EOL
 
       result = described_class.perform(text)

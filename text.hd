@@ -1,6 +1,0 @@
-:markdown
-  ![This is the alt-attribute for my image](http://imgur.com/myimage.jpg "An optional title")
-
-  ![](/images/main.png)
-
-  ![Hello](/images/main.png)

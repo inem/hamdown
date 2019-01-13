@@ -1,26 +1,28 @@
 # NOTES
 
-Notes of the first implementation
+Notes of the second implementation
+
+# Supported features
+
+Markdown features:
+
+- headers
+- text styles
+- links
+- images
+- inline code
+- block quotes
+- lists and nested lists
 
 # TODO
 
-## List
-
 ### Refactor the code
 
-The code smell and need to be refactored
+The code inside lib/hamdown/md_regs/\* smell and need to be refactored
 
 ### Add paragraph support
 
 To implement markdown's paragraph feature (<p> tag)
-
-### To refactor reg_ex in lib/hamdown/md_regs/\*.rb
-
-Each reg_ex should return flat array
-
-### Add nested lists markdown feature
-
-In the current implementation nested lists are not supported
 
 ## Prediction errors by parsing text
 
@@ -28,10 +30,13 @@ Not sure how to predict errors and print an message as `ParceError: invalid text
 
 ## Limitations
 
-### Hamlit does not work with nested HTML-tags
+## CODE BLOCK
 
-It raises an error: `Illegal nesting: nesting within plain text is illegal. (Hamlit::HamlSyntaxError)`
-Maybe we should use `:plain` filter when there's a need in nested HTML
+Code block is not supported because it is GitHub-flavored Markdown
+
+## ALTERNATIVE HEADING
+
+It is not supported
 
 ## Resources
 

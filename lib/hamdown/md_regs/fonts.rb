@@ -13,33 +13,33 @@ module Hamdown
 
       private
 
-      # TODO: escape html with cgi
+      # TODO: refactoring
       def text_handler(text, scan_res, reg_name)
         scan_res = scan_res.map { |i| i.lstrip  }
         html_scan = scan_res.map do |i|
           s = ''
           if reg_name == 'bold'
             s = i.sub(/^\*\*/, '').sub(/\*\*$/, '')
-            s = "<strong>#{CGI.escapeHTML(s)}</strong>"
+            s = "<strong>#{escape_html(s)}</strong>"
           elsif reg_name == 'b_italic'
             s = i.sub(/^\*\*\*/, '').sub(/\*\*\*$/, '')
-            s = "<strong><em>#{CGI.escapeHTML(s)}</em></strong>"
+            s = "<strong><em>#{escape_html(s)}</em></strong>"
           elsif reg_name == 'b_italic2'
             s = i.sub(/^\*\*\_/, '').sub(/\_\*\*$/, '')
-            s = "<strong><em>#{CGI.escapeHTML(s)}</em></strong>"
+            s = "<strong><em>#{escape_html(s)}</em></strong>"
           elsif reg_name == 'b_italic3'
             s = i.sub(/^\*\_\_/, '')
                   .sub(/\_\_\*$/, '')
-            s = "<strong><em>#{CGI.escapeHTML(s)}</em></strong>"
+            s = "<strong><em>#{escape_html(s)}</em></strong>"
           elsif reg_name == 'link'
             i_text = i.scan(/\[([^\[\]]*?)\]\([^\s]*?\)/).to_a.flatten[0]
             i_href = i.scan(/\[[^\[\]]*?\]\(([^\s]*?)\)/).to_a.flatten[0]
-            s = "<a href=\"#{i_href}\">#{CGI.escapeHTML(i_text)}</a>"
+            s = "<a href=\"#{i_href}\">#{escape_html(i_text)}</a>"
           else reg_name == 'link_with_title'
             i_text = i.scan(/\[([^\[\]]*?)\]\([^\s]*\s\".*\"\)/).to_a.flatten[0]
             i_href = i.scan(/\[[^\[\]]*?\]\(([^\s]*)\s\".*\"\)/).to_a.flatten[0]
             i_title = i.scan(/\[[^\[\]]*?\]\([^\s]*\s\"(.*)\"\)/).to_a.flatten[0]
-            s = "<a href=\"#{i_href}\" title=\"#{i_title}\">#{CGI.escapeHTML(i_text)}</a>"
+            s = "<a href=\"#{i_href}\" title=\"#{i_title}\">#{escape_html(i_text)}</a>"
           end
           s
         end

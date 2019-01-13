@@ -27,9 +27,8 @@ Gem::Specification.new do |s|
     lib/hamdown/md_regs/fonts2.rb
     lib/hamdown/md_regs/headers.rb
     lib/hamdown/md_regs/images.rb
-    lib/hamdown/md_regs/o_list.rb
+    lib/hamdown/md_regs/list.rb
     lib/hamdown/md_regs/quotes.rb
-    lib/hamdown/md_regs/u_list.rb
   ]
   # = MANIFEST =
 

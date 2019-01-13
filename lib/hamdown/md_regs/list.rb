@@ -1,14 +1,15 @@
 module Hamdown
   module MdRegs
-    # class with logic of markdown's code block
-    class Code < AbstractReg
+    # class with logic of markdown's ordered lists
+    class List < AbstractReg
       REGS = {
-        'code' => /^[\ ]*```[^`]*```\n?/
+        'list' => /((^ *[\d{1,3}|\*|\+]\.? .*\n?)+)/
       }.freeze
 
       private
 
       def text_handler(text, scan_res, reg_name)
+        scan_res = scan_res.map{ |i| i[0] }
         html_scan = scan_res.map do |i|
           prepend_markdown_filter(i)
         end

@@ -1,15 +1,13 @@
-require 'markdown'
 require 'cgi'
-# TODO: escape html with cgi
+require 'markdown'
 require_relative 'md_regs/abstract_reg'
 require_relative 'md_regs/code'
 require_relative 'md_regs/fonts'
 require_relative 'md_regs/fonts2'
 require_relative 'md_regs/headers'
 require_relative 'md_regs/images'
-require_relative 'md_regs/o_list'
+require_relative 'md_regs/list'
 require_relative 'md_regs/quotes'
-require_relative 'md_regs/u_list'
 
 module Hamdown
   # Module to recognize markdown patterns in text and compile it to html/haml
@@ -19,8 +17,7 @@ module Hamdown
     # how to replace it by html
     OBJECTS = [
       # lists should be before fonts
-      MdRegs::OList,
-      MdRegs::UList,
+      MdRegs::List,
       MdRegs::Headers,
       MdRegs::Images,
       MdRegs::Code,
