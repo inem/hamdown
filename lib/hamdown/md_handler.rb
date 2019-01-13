@@ -3,9 +3,11 @@ require 'markdown'
 require_relative 'md_regs/abstract_reg'
 require_relative 'md_regs/code'
 require_relative 'md_regs/fonts'
+require_relative 'md_regs/links'
 require_relative 'md_regs/fonts2'
 require_relative 'md_regs/headers'
 require_relative 'md_regs/images'
+require_relative 'md_regs/images_with_title'
 require_relative 'md_regs/list'
 require_relative 'md_regs/quotes'
 
@@ -20,9 +22,11 @@ module Hamdown
       MdRegs::List,
       MdRegs::Headers,
       MdRegs::Images,
+      MdRegs::ImagesWithTitle,
       MdRegs::Code,
       # font should be before fonts2
       MdRegs::Fonts,
+      MdRegs::Links,
       MdRegs::Fonts2,
       MdRegs::Quotes
     ].freeze

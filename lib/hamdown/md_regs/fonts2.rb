@@ -15,12 +15,10 @@ module Hamdown
         html_scan = scan_res.map do |i|
           s = ''
           if reg_name == 'italic'
-            s = i.sub(/^[\*|\_]/, '')
-                 .sub(/[\*|\_]$/, '')
+            s = i.sub(/^[\*|\_]/, '').sub(/[\*|\_]$/, '')
             s = "<em>#{escape_html(s)}</em>"
           elsif reg_name == 'monospace'
-            s = i.sub(/^\`/, '')
-                 .sub(/\`$/, '')
+            s = i.sub(/^\`/, '').sub(/\`$/, '')
             s = "<code>#{escape_html(s)}</code>"
           end
           s

@@ -19,6 +19,7 @@ Markdown features:
 ### Refactor the code
 
 The code inside lib/hamdown/md_regs/\* smell and need to be refactored
+All all code should be passed by Rubocop.
 
 ### Add paragraph support
 
