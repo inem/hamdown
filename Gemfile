@@ -8,6 +8,7 @@ gemspec
 group :development do
   gem 'pry'
   gem 'rspec'
+  gem 'solargraph'
   gem 'rubocop-rspec'
   gem 'rspec-power_assert'
 end
