@@ -7,7 +7,7 @@ module Hamdown
   module Engine
     # It takes string with hamdown text and compile it to html
     def self.perform(hd_text = '')
-      return '' if hd_text.size == 0
+      return '' if hd_text.nil? || hd_text.size == 0
 
       # step 1: hamdown to haml
       haml_text = HamdownCore::Engine.call(hd_text)
