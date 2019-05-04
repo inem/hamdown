@@ -21,11 +21,11 @@ RSpec.describe Hamdown::Engine do
         <html>
         <head>
         <title>
-        Sativaware : Introduction to HAML
+        <p>Sativaware : Introduction to HAML</p>
         </title>
         </head>
         <body>
-        Haml is a markup language  ...
+        <p>Haml is a markup language  &#8230;</p>
         <strong class='code' id='message'>Hello, World!</strong>
         </body>
         </html>
@@ -42,14 +42,15 @@ RSpec.describe Hamdown::Engine do
 
           %p
             ## It is second title
+
             ### And title again
         EOL
 
         right_result = <<~EOL
-          <h2>Hello it is title</h2>
+          <h2 id="hello-it-is-title">Hello it is title</h2>
           <p>
-          <h2>It is second title</h2>
-          <h3>And title again</h3>
+          <h2 id="it-is-second-title">It is second title</h2>
+          <h3 id="and-title-again">And title again</h3>
           </p>
         EOL
 
@@ -69,12 +70,12 @@ RSpec.describe Hamdown::Engine do
 
         right_result = <<~EOL
           <div>
-          Some some text with bold <strong>typing lolol</strong> =)
-          Some some text with italic <em>typing lolol</em> =)
+          <p>Some some text with bold <strong>typing lolol</strong> =)
+          Some some text with italic <em>typing lolol</em> =)</p>
           </div>
           <p>
-          <em>italic again</em>
-          <strong>bold again</strong>
+          <p><em>italic again</em>
+          <strong>bold again</strong></p>
           </p>
         EOL
 
@@ -91,9 +92,9 @@ RSpec.describe Hamdown::Engine do
         EOL
 
         right_result = <<~EOL
-          Some some text with inline code <code>&lt;addr&gt;</code> =)
+          <p>Some some text with inline code <code>&lt;addr&gt;</code> =)</p>
           <div class='container'>
-          <code>12 + 12 / 2</code>
+          <p><code>12 + 12 / 2</code></p>
           </div>
         EOL
 
@@ -103,25 +104,27 @@ RSpec.describe Hamdown::Engine do
 
       it 'works with code block' do
         text = <<~EOL
-          ```ruby
-          class A; end
-          def foo(i)
-            return i + 1
-          end
-          ```
-
-          %div.container
+          :markdown
             ```ruby
             class A; end
             def foo(i)
               return i + 1
             end
             ```
+
+          %div.container
+            :markdown
+              ```ruby
+              class A; end
+              def foo(i)
+                return i + 1
+              end
+              ```
         EOL
         right_result = <<~EOL
-          <pre lang=\"ruby\"><code>class A; end&#10;def foo(i)&#10;  return i + 1&#10;end&#10;</code></pre>
+          <p><code>ruby&#x000A;class A; end&#x000A;def foo(i)&#x000A;  return i + 1&#x000A;end</code></p>
           <div class='container'>
-          <pre lang=\"ruby\"><code>  class A; end&#10;  def foo(i)&#10;    return i + 1&#10;  end&#10;</code></pre>
+          <p><code>ruby&#x000A;class A; end&#x000A;def foo(i)&#x000A;  return i + 1&#x000A;end</code></p>
           </div>
         EOL
 
@@ -150,14 +153,14 @@ RSpec.describe Hamdown::Engine do
         EOL
 
         right_result = <<~EOL
-          Sometimes you want numbered lists:
+          <p>Sometimes you want numbered lists:</p>
           <ol>
             <li>One</li>
             <li>Two</li>
             <li>Three</li>
             <li>Four</li>
           </ol>
-          Another list
+          <p>Another list</p>
           <ol>
             <li>One (B)</li>
             <li>Two (B)</li>
@@ -206,21 +209,21 @@ RSpec.describe Hamdown::Engine do
         EOL
 
         right_result = <<~EOL
-          Sometimes you want unnumbered lists:
+          <p>Sometimes you want unnumbered lists:</p>
           <ul>
             <li>One (A)</li>
             <li>Two (A)</li>
             <li>Three (A)</li>
           </ul>
           <div class='container'>
-          It can be nested
+          <p>It can be nested</p>
           <p>
           <ul>
             <li>One (B)</li>
             <li>Two (B)</li>
           </ul>
           </p>
-          Title
+          <p>Title</p>
           <ul>
             <li>One (B2)</li>
             <li>Two (B2)</li>
@@ -229,7 +232,7 @@ RSpec.describe Hamdown::Engine do
           </div>
           <div class='container'>
           <div class='some_class'>
-          And one more
+          <p>And one more</p>
           <ul>
             <li>Dashes work just as well</li>
             <li>And if you have sub points, put two spaces before the dash or star</li>
@@ -256,22 +259,23 @@ RSpec.describe Hamdown::Engine do
 
           %section.container
             # Title
+
             ## Subtitle
             .content
               ![](/images/main.png)
         EOL
         right_result = <<~EOL
-          <h1>Main Title</h1>
+          <h1 id="main-title">Main Title</h1>
           <h2 class='f2 helvetica strike'>
-          Fancy title
-          <strong>with some bold</strong>
+          <p>Fancy title
+          <strong>with some bold</strong></p>
           </h2>
-          Some content
+          <p>Some content</p>
           <section class='container'>
-          <h1>Title</h1>
-          <h2>Subtitle</h2>
+          <h1 id="title">Title</h1>
+          <h2 id="subtitle">Subtitle</h2>
           <div class='content'>
-          <img src="/images/main.png" alt="" />
+          <p><img src="/images/main.png" alt="" /></p>
           </div>
           </section>
         EOL
@@ -315,10 +319,10 @@ RSpec.describe Hamdown::Engine do
           <!-- This is what a comment looks like in Haml. -->
           <body>
           <header>
-          <h1>Hello</h1>
+          <h1 id="hello">Hello</h1>
           </header>
           <p>
-          It's very easy to make some words <strong>bold</strong> and other words <em>italic</em> with Markdown. You can even <a href="http://google.com">link to Google!</a>
+          <p>It's very easy to make some words <strong>bold</strong> and other words <em>italic</em> with Markdown. You can even <a href="http://google.com">link to Google!</a></p>
           </p>
           <div class='main'>
           <ul>
@@ -326,7 +330,7 @@ RSpec.describe Hamdown::Engine do
             <li>Item 2</li>
           </ul>
           <div id='my_id'>
-          <img src="/images/logo.png" alt="GitHub Logo" />
+          <p><img src="/images/logo.png" alt="GitHub Logo" /></p>
           <ol>
             <li>Item 1</li>
             <li>Item 2</li>
