@@ -21,20 +21,12 @@ Gem::Specification.new do |s|
     lib/hamdown/engine.rb
     lib/hamdown/haml_handler.rb
     lib/hamdown/md_handler.rb
-    lib/hamdown/md_regs/abstract_reg.rb
-    lib/hamdown/md_regs/code.rb
-    lib/hamdown/md_regs/fonts.rb
-    lib/hamdown/md_regs/fonts2.rb
-    lib/hamdown/md_regs/headers.rb
-    lib/hamdown/md_regs/images.rb
-    lib/hamdown/md_regs/o_list.rb
-    lib/hamdown/md_regs/quotes.rb
-    lib/hamdown/md_regs/u_list.rb
   ]
   # = MANIFEST =
 
-  s.add_runtime_dependency 'markdown'
+  s.add_runtime_dependency 'hamdown_core'
   s.add_runtime_dependency 'haml'
+  s.add_runtime_dependency 'markdown'
 
   s.executables = ['hamdown']
 

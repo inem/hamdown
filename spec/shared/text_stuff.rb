@@ -14,6 +14,8 @@ RSpec.shared_context "text stuff", :shared_context => :metadata do
 
         ## Subtitle
 
+        ![](/images/main.png "hello")
+
         .content
           ![](/images/main.png)
 

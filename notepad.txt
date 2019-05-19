@@ -1,0 +1,82 @@
+* headers with the same context
+`
+# This is an <h1>
+## This is an <h1>
+`
+Problem type: uncorrect render
+Level: Critical
+How to solve: gsub -> sub
+
+
+MARKDOWN
+https://learnxinyminutes.com/docs/markdown/
+
+* nested lists
+`
+1. Item one
+2. Item two
+3. Item three
+    * Sub-item
+    * Sub-item
+4. Item four
+`
+Problem type: it raises an error 'Illegal nesting: nesting within plain text is illegal. (Haml::SyntaxError)'
+Level:
+How to solve:
+
+* alternative ways of indicating h1 and h2.
+`
+This is an h1
+=============
+
+This is an h2
+-------------
+`
+Problem type: it raises Haml::SyntaxError
+
+
+* bold and italic by underscore
+`
+_This text is in italics._
+__This text is in bold.__
+___This text is in both.___
+`
+Problem type: it does not transform the text
+
+* Paragraphs
+Problem type: It does not render paragraphs
+
+* Horizontal rules
+`
+***
+****************
+`
+Problem type: It does not transform the text
+Level:
+How to solve:
+
+
+* Link with title
+`
+[Click me!](http://test.com/ "Link to Test.com")
+`
+Problem type: It does not transform the text
+
+
+* Link with relative path
+`
+[Go to music](/music/).
+`
+Problem type: It does not transform the text
+
+
+* Reference style links
+`
+[Click this link][link1] for more info about it!
+[Also check out this link][foobar] if you want to.
+
+[link1]: http://test.com/ "Cool!"
+[foobar]: http://foobar.biz/ "Alright!"
+`
+Problem type: It does not transform the text
+

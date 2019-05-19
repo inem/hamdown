@@ -1,0 +1,7 @@
+:markdown
+  ```ruby
+  class A; end
+  def foo(i)
+    return i + 1
+  end
+  ```
