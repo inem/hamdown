@@ -1,5 +1,10 @@
 ![Logo](https://i.imgur.com/n8UBf99.png)
 
+## Demo app
+
+https://github.com/kopylovvlad/rails_app_with_hamdown
+
+
 ## Why: To achieve hyper-efficiency when working on static websites
 
 It is very efficient to use Markdown with static site generators, like [Jekyll](https://jekyllrb.com/) or [Middleman](https://middlemanapp.com/). Although, sometimes Markdown is not enough. 
@@ -203,10 +208,15 @@ Anyway, it makes sense to start with only a subset of Markdown features.
 
 ## Roadmap
 
-- [ ] Proof of concept implementation of Hamdown
-- [ ] Describe a minimal subset of Markdown features to implement 
-- [ ] List all format conflicts and provide solutions
-- [ ] Develop specs
+- [x] Proof of concept implementation of Hamdown
+- [x] Describe a minimal subset of Markdown features to implement 
+- [x] List all format conflicts and provide solutions
+- [x] Develop specs
+- [ ] Support nested lists
+- [ ] Support code blocks syntax highlighting
+- [ ] (?) Frontmatter
+- [ ] Proper interface for Tilt
+- [ ] Hamdown syntax highlighters for popular editors
 
 ## Contribution
 
